@@ -61,6 +61,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const nextBtn5 = document.getElementById("next-btn-5");
+  const animScreen = document.getElementById("anim-screen");
+
+  if (nextBtn5) {
+    nextBtn5.addEventListener("click", () => {
+      compact5Screen.classList.add("hidden");
+      animScreen.classList.remove("hidden");
+      
+      const lottiePlayer = document.getElementById("paws-lottie");
+      if (lottiePlayer && typeof lottiePlayer.play === 'function') {
+        lottiePlayer.play();
+      }
+
+      setTimeout(() => {
+        const resultScreen = document.getElementById("result-screen");
+        if (resultScreen) {
+          animScreen.classList.add("hidden");
+          resultScreen.classList.remove("hidden");
+        }
+      }, 3500);
+    });
+  }
+
   // Handle slider logic for dog image
   const bindDogSlider = (sliderId, imageId) => {
     const slider = document.getElementById(sliderId);
@@ -108,22 +131,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Navigate to compact 4
   const nextBtn3 = document.getElementById("next-btn-3");
   const compact4Screen = document.getElementById("compact-4-screen");
+  const dynamicDogImage = document.getElementById("dynamic-dog-image");
 
   if (nextBtn3) {
     nextBtn3.addEventListener("click", () => {
-      document.getElementById("dynamic-dog-image-4").src = dynamicDogImage.src;
+      if (dynamicDogImage) {
+        document.getElementById("dynamic-dog-image-4").src = dynamicDogImage.src;
+      }
       compact3Screen.classList.add("hidden");
       compact4Screen.classList.remove("hidden");
-    });
-  }
-
-  // Back navigation for compact 4
-  const backToC3 = document.getElementById("back-to-c3");
-  
-  if (backToC3) {
-    backToC3.addEventListener("click", () => {
-      compact4Screen.classList.add("hidden");
-      compact3Screen.classList.remove("hidden");
     });
   }
 
@@ -133,9 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (nextBtn4) {
     nextBtn4.addEventListener("click", () => {
-      document.getElementById("dynamic-dog-image-5").src = dynamicDogImage.src;
+      document.getElementById("dynamic-dog-image-5").src = document.getElementById("dynamic-dog-image-4").src;
       compact4Screen.classList.add("hidden");
       compact5Screen.classList.remove("hidden");
+    });
+  }
+
+  if (backToC3) {
+    backToC3.addEventListener("click", () => {
+      compact4Screen.classList.add("hidden");
+      compact3Screen.classList.remove("hidden");
     });
   }
 
