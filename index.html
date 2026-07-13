@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>blinkit pet feature</title>
     <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"></script>
   </head>
   <body>
     <div id="app">
@@ -21,9 +22,133 @@
           <!-- The homepage bg will serve as the base -->
           <img src="/without banner.jpg" alt="Homepage" class="homepage-bg" />
           
-          <div class="banner-container">
+          <div class="banner-container" id="play-banner" style="cursor: pointer;">
             <img src="/banner homepage.png?v=2" alt="Banner" class="banner-img" />
           </div>
+        </div>
+
+        <!-- Compact 1 Screen -->
+        <div id="compact-1-screen" class="screen hidden">
+          <div class="back-btn" id="back-to-home">&larr;</div>
+          <img src="/Android Compact - 1.jpg" alt="Compact 1" class="compact-bg" />
+          <div class="button-cover-wrapper">
+            <button id="get-started-btn" class="native-next-btn" style="position: static; margin: 0; width: calc(100% - 48px);">Get started</button>
+          </div>
+        </div>
+
+        <!-- Compact 2 Screen -->
+        <div id="compact-2-screen" class="screen hidden native-screen">
+          <div class="back-btn" id="back-to-c1">&larr;</div>
+          <div class="native-progress-container">
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar"></div>
+            <div class="native-progress-bar"></div>
+            <div class="native-progress-bar"></div>
+          </div>
+          
+          <h1 class="native-heading">Let's see that face</h1>
+
+          <div class="native-avatar-container">
+            <div class="native-avatar-bg">
+              <svg xmlns="http://www.w3.org/2000/svg" height="60" viewBox="0 -960 960 960" width="60" fill="#888">
+                <path d="M239-550q-41 0-68.5-27.5T143-646q0-41 27.5-68.5T239-742q41 0 68.5 27.5T335-646q0 41-27.5 68.5T239-550Zm241-118q-41 0-68.5-27.5T384-764q0-41 27.5-68.5T480-860q41 0 68.5 27.5T576-764q0 41-27.5 68.5T480-668Zm241 118q-41 0-68.5-27.5T625-646q0-41 27.5-68.5T721-742q41 0 68.5 27.5T817-646q0 41-27.5 68.5T721-550ZM480-100q-134 0-222.5-66.5T124-344q-14-41 10-74t62-42q30-10 60.5-8.5T315-460q35 15 76.5 22.5T480-430q47 0 88.5-7.5T645-460q28-11 58.5-8.5T764-460q38 9 62 42t10 74q-45 111-133.5 177.5T480-100Z"/>
+              </svg>
+            </div>
+            <div class="native-add-icon">+</div>
+            <input type="file" id="pet-image-upload" accept="image/*" />
+            <img id="pet-image-preview" class="hidden" />
+          </div>
+          
+          <input type="text" id="pet-name-input" placeholder="Your Pet's Name" />
+          
+          <button id="next-btn-2" class="native-next-btn">Next</button>
+        </div>
+
+        <!-- Compact 3 Screen -->
+        <div id="compact-3-screen" class="screen hidden native-screen">
+          <div class="back-btn" id="back-to-c2">&larr;</div>
+          <div class="native-progress-container">
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar"></div>
+            <div class="native-progress-bar"></div>
+          </div>
+          
+          <h1 class="native-heading">How does your pet spend most of the day?</h1>
+          
+          <div class="native-dog-image-container">
+            <img src="/dog_center_1783931617145.png" id="dynamic-dog-image" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="slider-labels">
+              <span class="slider-label">Lounging</span>
+              <span class="slider-label">Playing</span>
+            </div>
+            <input type="range" id="dog-slider" min="0" max="2" value="1" step="1" />
+          </div>
+          
+          <button id="next-btn-3" class="native-next-btn">Next</button>
+        </div>
+
+        <!-- Compact 4 Screen -->
+        <div id="compact-4-screen" class="screen hidden native-screen">
+          <div class="back-btn" id="back-to-c3">&larr;</div>
+          <div class="native-progress-container">
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar"></div>
+          </div>
+          
+          <h1 class="native-heading">Around new people, your pet is...</h1>
+          
+          <div class="native-dog-image-container">
+            <img src="/dog_center_1783931617145.png" id="dynamic-dog-image-4" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="slider-labels">
+              <span class="slider-label">Reserved</span>
+              <span class="slider-label">Friendly</span>
+            </div>
+            <input type="range" id="personality-slider" min="0" max="2" value="1" step="1" />
+          </div>
+          
+          <button id="next-btn-4" class="native-next-btn">Next</button>
+        </div>
+
+        <!-- Compact 5 Screen -->
+        <div id="compact-5-screen" class="screen hidden native-screen">
+          <div class="back-btn" id="back-to-c4">&larr;</div>
+          <div class="native-progress-container">
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+            <div class="native-progress-bar active"></div>
+          </div>
+          
+          <h1 class="native-heading">What's their biggest motivation?</h1>
+          
+          <div class="native-dog-image-container">
+            <img src="/dog_center_1783931617145.png" id="dynamic-dog-image-5" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="slider-labels">
+              <span class="slider-label">Food</span>
+              <span class="slider-label">Fun</span>
+            </div>
+            <input type="range" id="motivation-slider" class="thick-slider" min="0" max="2" value="1" step="1" />
+          </div>
+          
+          <button id="next-btn-5" class="native-next-btn">Done</button>
+        </div>
+
+        <!-- Animation Screen -->
+        <div id="anim-screen" class="screen hidden native-screen" style="justify-content: center; align-items: center; background-color: #ffffff;">
+          <dotlottie-player src="/paws-animation.lottie" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></dotlottie-player>
+          <h2 style="font-size: 20px; font-weight: 500; color: #333; margin-top: 20px;">Fetching treats...</h2>
         </div>
       </div>
     </div>
